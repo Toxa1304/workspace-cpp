@@ -2,19 +2,21 @@
 using namespace std;
 class Student{
   public:
+  //Student(); 
   int age;
   double height;
+  
   int compareTo(Student ss){
     if (age == ss.age && height == ss.height){
       return 0;
     }
-    else if (age < ss.age){
+    else if (age > ss.age){
       return -1;
     }
-    else if (age > ss.age){
+    else if (age < ss.age){
       return 1;
     }
-    else if (height < ss.height){
+    else if (height > ss.height){
       return -1;
     }
     else {
