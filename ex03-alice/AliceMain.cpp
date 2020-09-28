@@ -34,15 +34,12 @@ int checkIfHeadNode(int val, vector <ds_course::Node> vectorOfNodes){
   }
   return 1;
 }
-int checkIfHaveChildren(int val, vector <ds_course::Node> vectorOfNodes){
 
-  return 0;
-}
 int main(){
 
   //open input file
   ifstream inFile;
-  inFile.open("example.txt");
+  inFile.open("in.txt");
   
   string line;
   std::map < int, ds_course::Node > nodeMap;
