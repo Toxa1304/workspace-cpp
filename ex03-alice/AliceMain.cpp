@@ -41,8 +41,8 @@ int checkIfHaveChildren(int val, vector <ds_course::Node> vectorOfNodes){
 int main(){
 
   //open input file
-  ifstream inFile;
-  inFile.open("example.txt");
+ // ifstream inFile;
+  //inFile.open("example.txt");
   
   string line;
   std::map < int, ds_course::Node > nodeMap;
@@ -51,7 +51,7 @@ int main(){
   vector<ds_course::Node> vectorOfNodes;
   //vector<ds_course::Node> finalNodeList;
   
-  while(getline(inFile, line)){
+  while(getline(cin, line)){
     //get input each line
     istringstream treeline(line);
     int currentnode;
@@ -79,10 +79,10 @@ int main(){
     //cout<<bufferNode.val<<endl;
     checker = 0;
   }
-  inFile.close();
+  //inFile.close();
   //cout << vectorOfNodes[0].children[0]<< endl;
-  ofstream outputFile;
-  outputFile.open("output.txt");
+  //ofstream outputFile;
+ // outputFile.open("output.txt");
 
 
 for (int i = 0; i < vectorOfNodes.size(); i++) {
