@@ -42,8 +42,8 @@ int main(){
  // ifstream inFile;
   //inFile.open("example.txt");
 
-  ifstream inFile;
-  inFile.open("in.txt");
+//  ifstream inFile;
+  //inFile.open("in.txt");
   
   string line;
   std::map < int, ds_course::Node > nodeMap;
