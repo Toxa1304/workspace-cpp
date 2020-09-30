@@ -72,7 +72,7 @@ int main () {
 
     Student minStud = getMin(obj);
     Student maxStud = getMax(obj);
-    cout << minStud.age << " "<< minStud.height << endl;
-    cout << maxStud.age << " " << maxStud.height << endl;
+    cout <<  minStud.age << " " << std::fixed << std::setprecision(5) << minStud.height << endl;
+    cout << maxStud.age << " " << std::fixed << std::setprecision(5) << maxStud.height << endl;
   return 0;
 }
