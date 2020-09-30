@@ -28,18 +28,15 @@ Student getMax (vector <Student> obj){
 }
 
 int main () {
-  cout << std::setprecision(10);
-  //Student obj[3];
+
   vector< Student > obj;
   string line;
-  ifstream myfile ("example.txt");
-
-
-  if (myfile.is_open()){
+ 
+  
     int lineCount;
     lineCount = 0;
     
-    while ( getline (myfile,line) )
+    while ( getline (cin,line) )
     {
       lineCount+=1;
       //remember number of students
@@ -72,27 +69,10 @@ int main () {
       }
 
     }
-  }
-  else cout << "Unable to open file";
-  myfile.close();
-    //cout << &obj[0].age << endl;
-    cout << numberOfStudents << endl;
-    for (int i =0; i <=  numberOfStudents - 1; i++) {
-      //cout << obj[i].height <<endl;
-    }
+
     Student minStud = getMin(obj);
     Student maxStud = getMax(obj);
-    cout << minStud.height << endl;
-    cout << maxStud.height << endl;
-    
-     ofstream MyFile("output.txt");
-
-  // Write to the file
-  MyFile << minStud.age;
-  MyFile << " " << std::fixed << std::setprecision(5) << minStud.height << endl;
-  MyFile << maxStud.age;
-  MyFile << " " << std::fixed << std::setprecision(5) << maxStud.height << endl;
-  // Close the file
-  MyFile.close();
+    cout << minStud.age << " "<< minStud.height << endl;
+    cout << maxStud.age << " " << maxStud.height << endl;
   return 0;
 }
