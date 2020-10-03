@@ -32,6 +32,10 @@ int main() {
             m1 + m2;
             cout << "SUCCESS" << endl;
         }
+        if(strcmp(operation, "SUB")==0){
+            m1 - m2;
+            cout << "SUCCESS" << endl;
+        }
     }
 
     cout<< "THE ROW and COLUMN ARE: " << row1 << " " << col1  << " " << type1 << " "<< operation << endl;

@@ -21,6 +21,8 @@ namespace ds_course
 
         bool operator==(const ds_course::Matrix<T> &rhs);
         void operator+(const ds_course::Matrix<T> &rhs);
+        void operator-(const ds_course::Matrix<T> &rhs); 
+        void operator*(const ds_course::Matrix<T> &rhs); 
         friend std::istream &operator>>(std::istream &input, ds_course::Matrix<T> &m)
         {
             for (int i = 0; i < m.getRows(); i++)
@@ -77,7 +79,39 @@ void ds_course::Matrix<T>::operator+(const ds_course::Matrix<T> &rhs)
     }
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < cols; j++)
-            a[i][j] == a[i][j] + rhs.a[i][j];
+            a[i][j] = a[i][j] + rhs.a[i][j];
+    std::cout << "ASDASD: "<< a[1][1] << std::endl;
 }
+template <class T>
+void ds_course::Matrix<T>::operator-(const ds_course::Matrix<T> &rhs)
+{
+    if (rows != rhs.rows)
+    {
+        throw std::out_of_range("row counts differ");
+    }
+    if (cols != rhs.cols)
+    {
+        throw std::out_of_range("col counts differ");
+    }
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            a[i][j] = a[i][j] - rhs.a[i][j];
+    std::cout << "ASDASD: "<< a[1][1] << std::endl;
+}
+// template <class T>
+// void ds_course::Matrix<T>::operator*(const ds_course::Matrix<T> &rhs)
+// {
+//     if (cols != rhs.rows)
+//     {
+//         throw std::out_of_range("Multiplication impossible, invalid matrices");
+//     }
+//     for(i=0; i<r1; ++i)
+//       for(j=0; j<c2; ++j)
+//       for(k=0; k<c1; ++k) {
+//          product[i][j]+=a[i][k]*b[k][j];
+//       }
+    
+//     std::cout << "ASDASD: "<< a[1][1] << std::endl;
+// }
 
 #endif /* DS_MATRIX_H */
