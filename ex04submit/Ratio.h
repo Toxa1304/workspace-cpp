@@ -22,10 +22,14 @@ namespace ds_course
         bool operator==(const Ratio &rhs);
         Ratio operator-(const Ratio &rhs);
         Ratio operator*(const Ratio &rhs);
-
+        Ratio operator=(const Ratio &rhs);
         friend std::ostream &operator<<(std::ostream &oStream, const Ratio rat)
         {
-            oStream << "[" << rat.num << "/" << rat.den << "]";
+            if(rat.num == 0){
+                oStream  << rat.num;
+                return oStream;
+            }
+            oStream  << rat.num << "/" << rat.den;
             return oStream;
         }
 
@@ -94,6 +98,15 @@ ds_course::Ratio ds_course::Ratio::operator*(const Ratio &rhs)
 {
     int upside = num * rhs.num;
     int downside = den * rhs.den;
+    ds_course::Ratio result(upside, downside);
+    return result;
+}
+ds_course::Ratio ds_course::Ratio::operator=(const Ratio &rhs)
+{
+    num = rhs.num;
+    den = rhs.den;
+    int upside = rhs.num;
+    int downside = rhs.den;
     ds_course::Ratio result(upside, downside);
     return result;
 }
