@@ -50,34 +50,34 @@ template <class T>
 int ds_course::Matrix<T>::getCols() { return cols; }
 
 
-template <class T>
-bool ds_course::Matrix<T>::operator==(const ds_course::Matrix<T> &rhs)
-{
-    if (rows != rhs.rows)
-    {
-        throw std::out_of_range("row counts differ");
-    }
-    if (cols != rhs.cols)
-    {
-        throw std::out_of_range("col counts differ");
-    }
-    for (int i = 0; i < rows; i++)
-        for (int j = 0; j < cols; j++)
-            if (! (a[i][j] == rhs.a[i][j]))
-                return false;
-    return true;
-}
+// template <class T>
+// bool ds_course::Matrix<T>::operator==(const ds_course::Matrix<T> &rhs)
+// {
+//     if (rows != rhs.rows)
+//     {
+//         throw std::out_of_range("row counts differ");
+//     }
+//     if (cols != rhs.cols)
+//     {
+//         throw std::out_of_range("col counts differ");
+//     }
+//     for (int i = 0; i < rows; i++)
+//         for (int j = 0; j < cols; j++)
+//             if (! (a[i][j] == rhs.a[i][j]))
+//                 return false;
+//     return true;
+// }
 template <class T>
 void ds_course::Matrix<T>::operator+(const ds_course::Matrix<T> &rhs)
 {
     if (rows != rhs.rows)
     {
-        std::cout << "out_of_range";
+        std::cout << "out_of_range" << std::endl;
         throw std::out_of_range("row counts differ");
     }
     if (cols != rhs.cols)
     {
-        std::cout << "out_of_range";
+        std::cout << "out_of_range" << std::endl;
         throw std::out_of_range("col counts differ");
 
     }
@@ -99,13 +99,13 @@ void ds_course::Matrix<T>::operator-(const ds_course::Matrix<T> &rhs)
 {
     if (rows != rhs.rows)
     {
-        std::cout << "out_of_range";
+        std::cout << "out_of_range" << std::endl;
         throw std::out_of_range("row counts differ");
 
     }
     if (cols != rhs.cols)
     {
-        std::cout << "out_of_range";
+        std::cout << "out_of_range" << std::endl;
         throw std::out_of_range("col counts differ");
 
     }
@@ -126,9 +126,8 @@ void ds_course::Matrix<T>::operator*(const ds_course::Matrix<T> &rhs)
 {
     if (cols != rhs.rows)
     {
-        throw std::runtime_error("out_of_range");
-        // std::cout << "out_of_range";
-        // throw std::out_of_range("Multiplication impossible, invalid matrices");
+        std::cout << "out_of_range" << std::endl;
+        throw std::out_of_range("Multiplication impossible, invalid matrices");
 
     }
     Matrix<T> resultingMatrix(rows,rhs.cols);
