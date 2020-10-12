@@ -15,7 +15,7 @@ class OutOfBoundsException
 // thrown when an operation attempts to access data outside the valid range
 OutOfBoundsException::OutOfBoundsException(const string& msg) {
     error_msg = msg;
-    cerr << "OutOfBoundsException: " << error_msg << '\n';
+    cerr << "OutOfBoundsException: " << endl;
 }
 OutOfBoundsException::~OutOfBoundsException() { delete this; }
 string OutOfBoundsException::getMessage() const { return error_msg; }
