@@ -5,7 +5,7 @@ class Node {
 
 public:
  int elem;
- int numberOfNodes;
+ int numberOfNodes =1;
  Node* theTopNode;
  Node* left;
  Node* right;
