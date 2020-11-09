@@ -182,51 +182,14 @@ int main(){
         if(c == '?'){
           
             insertAt = 0;    
-            //int h = maxDepth(&topNode);
 
-            // if(firstOne2==true){
-            //     int arraySize = numberOfNodes;
-            //     int arrayForOuptut[arraySize];
-            //     cin >> val;
-            //     //fill_tree(&topNode);
-            //     fill_array(topNode, arrayForOuptut);
-            //     // for(int i=0; i<arraySize; i++){
-            //     //     std::cout << arrayForOuptut[i] << " ";
-            //     // }
-            //     // std::cout << std::endl;
-
-
-            //     for(int i= 0; i<arraySize; i++){
-            //         if(val == arrayForOuptut[i]){
-            //             if(i==0){
-            //                 std::cout <<  "0 " <<arrayForOuptut[i+1]  <<std::endl; 
-            //             }
-            //             else if(i==arraySize-1){
-            //                 std::cout << arrayForOuptut[i-1] << " 0" <<std::endl; 
-            //             }
-
-            //             else if (i==0 && i ==arraySize-1){
-            //                 std::cout << "0 0" << std::endl;
-            //             }
-            //             else{
-            //                 std::cout << arrayForOuptut[i-1] << " " << arrayForOuptut[i+1] << std::endl;
-            //             }
-            //             break;
-            //         }
-            //         else if(i==arraySize-1){
-            //             print_error(0);
-            //         }
-                    
-
-            //     }
-            // }
             if(1){
                 //topNodeList[numberOfTopNodes-1] = &topNode;
                 //numberOfTopNodes+=1;
                 topNodeList[numberOfTopNodes-1]->numberOfNodes = numberOfNodes;
                 cin >> val;
 
-                std::cout << "Reading: ? " << val << std::endl;
+               
 
                 bool breaker = false;
                 for(int i=0; i<numberOfTopNodes; i++){
