@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string.h>
 
-// C++ program to insert a node in AVL tree  
+
 
 using namespace std; 
 int compare_general(char a[], char b[]);
@@ -19,7 +19,7 @@ int str_length(char* mystring) {
 //2 - SHORTLEX
 //3 - COLEX
 int mode = 0;
-// An AVL tree node  
+
 class Node  
 {  
     public: 
@@ -30,8 +30,7 @@ class Node
     int badness; 
 };  
   
-// A utility function to get maximum 
-// of two integers  
+
 int max(int a, int b);  
   
 // A utility function to get the  
@@ -178,19 +177,7 @@ Node* insert(Node* node, char key[])
     return node;  
 }  
   
-// A utility function to print preorder  
-// traversal of the tree.  
-// The function also prints height  
-// of every node  
-void preOrder(Node *root)  
-{  
-    if(root != NULL)  
-    {  
-        cout << root->key << " ";  
-        preOrder(root->left);  
-        preOrder(root->right);  
-    }  
-}  
+
   
 // Driver Code
 Node * minValueNode(Node* node)  
@@ -206,24 +193,12 @@ Node * minValueNode(Node* node)
 Node* deleteNode(Node* root, char * key)  
 {  
       
-    // STEP 1: PERFORM STANDARD BST DELETE  
     if (root == NULL)  
         return root;  
-  
-    // If the key to be deleted is smaller  
-    // than the root's key, then it lies 
-    // in left subtree  
     if ( compare_lexicographically(key, root->key) == -1 ) 
         root->left = deleteNode(root->left, key);  
-  
-    // If the key to be deleted is greater  
-    // than the root's key, then it lies  
-    // in right subtree  
     else if( compare_lexicographically(key, root->key) == 1)  
         root->right = deleteNode(root->right, key);  
-  
-    // if key is same as root's key, then  
-    // This is the node to be deleted  
     else
     {  
         // node with only one child or no child  
@@ -307,35 +282,19 @@ Node* deleteNode(Node* root, char * key)
   
     return root;  
 } 
-void printInorder(Node* node) { 
-    if (node == NULL) 
-    return; 
-    printInorder(node->left); 
-    cout << "(";
-    for (int i = 0 ; i < str_length(node->key); i++)
-        cout << node->key[i];
-    cout << "," << node ->badness;
-    cout << ") ";
-    
-    
-         
-    printInorder(node->right);  
-}
+
 
 int compare_char_noCaps(char a, char b){
-    //cout <<"COMPARE NOCAPS ENTERED" << endl;
     bool aUpper = false;
     bool bUpper = false;
     //make both letters lowercase
     if((int)a < 91&&(int)a > 64){
         aUpper = true;
         a = a + 32;
-        //cout<< ("char  a is upper!!")<< endl;
     }
     if((int)b < 91&&(int)b > 64){
         bUpper = true;
         b = b + 32;
-        //cout<< ("char  b is upper!!")<< endl;
     }
     if(a<b){
         return -1;
@@ -348,18 +307,15 @@ int compare_char_noCaps(char a, char b){
     }
 }
 int compare_caps(char a, char b){
-    //cout <<"COMPARE CAPS ENTERED" << endl;
     bool aUpper = false;
     bool bUpper = false;
     if((int)a < 91&&(int)a > 64){
         aUpper = true;
         a = a + 32;
-        //cout<< ("char  a is upper!!")<< endl;
     }
     if((int)b < 91&&(int)b > 64){
         bUpper = true;
         b = b + 32;
-        //cout<< ("char  b is upper!!")<< endl;
     }
     if(aUpper==true&&bUpper==false){
         return -1;
@@ -386,7 +342,6 @@ int compare_lexicographically(char a[], char b[]){
     else{
         minLen = lenB;
     }
-    //cout<< "MINLEN IS: " << minLen << endl;
         int i = 0;
         while(i<minLen){
             int result = compare_char_noCaps(a[i],b[i]);
@@ -448,25 +403,15 @@ int compare_colex(char a[], char b[]){
     int j =0;
     for(int i =lenA-1; i>=0; i--){
         reverseA[j] = a[i];
-        //cout << "the char A reversed is: " << a[i]<< endl;
         j++;
     }
     j = 0;
     for(int i =lenB-1; i>=0; i--){
         reverseB[j] = b[i];
-        //cout << "the char B reversed is: " << b[i]<< endl;
         j++;
     }
     reverseB[lenB] = '\0';
     reverseA[lenA] = '\0';
-    // for(int i=0; i<= lenA; i++){
-    //     cout << reverseA[i];
-    // }
-    // cout << endl;
-    // for(int i=0; i<= lenB; i++){
-    //     cout << reverseB[i];
-    // }
-   // cout << endl;
     return compare_lexicographically(reverseA, reverseB);
 }
 int compare_general(char a[], char b[]){
@@ -499,13 +444,26 @@ void getNode(char a[], Node* root){
         getNode(a, root->right);  
     }
 }
-
+void printInorder(Node* node) { 
+    if (node == NULL) 
+    return; 
+    printInorder(node->left); 
+    cout << "(";
+    for (int i = 0 ; i < str_length(node->key); i++)
+        cout << node->key[i];
+    cout << "," << node ->badness;
+    cout << ") ";
+    
+    
+         
+    printInorder(node->right);  
+}
 void printInorder2(Node* node, char b[]) { 
     if (node == NULL) 
     return; 
     printInorder2(node->left,b); 
 
-    if(compare_general(b, node->key)==1){
+    if(compare_general(b, node->key)==1 ||compare_general(b, node->key)==0){
         cout << "(";
         for (int i = 0 ; i < str_length(node->key); i++)
             cout << node->key[i];
@@ -520,7 +478,7 @@ void printInorder3(Node* node, char a[]) {
     return; 
     printInorder3(node->left,a); 
 
-    if(compare_general(a, node->key)==-1){
+    if(compare_general(a, node->key)==-1||compare_general(a, node->key)==0){
         cout << "(";
         for (int i = 0 ; i < str_length(node->key); i++)
             cout << node->key[i];
@@ -534,7 +492,7 @@ void printInorder4(Node* node, char a[],char b[]) {
     return; 
     printInorder4(node->left,a,b); 
 
-    if(compare_general(a, node->key)==-1 && compare_general(b, node->key)==1){
+    if((compare_general(a, node->key)==-1 && compare_general(b, node->key)==1)||(compare_general(a, node->key)==0 && compare_general(b, node->key)==1)||(compare_general(a, node->key)==-1 && compare_general(b, node->key)==0)){
         cout << "(";
         for (int i = 0 ; i < str_length(node->key); i++)
             cout << node->key[i];
@@ -546,7 +504,6 @@ void printInorder4(Node* node, char a[],char b[]) {
 void dump(char a[], char b[], Node* node){
     if(a[0]=='_' && b[0]=='_'){
         printInorder(node);
-        //cout << endl;
         return;
     }
     else if(a[0]=='_' ){
@@ -623,10 +580,6 @@ int main() {
                     loopCounter++;
                     continue;
                 }
-                // cout << value << endl;
-                
-                
-                
                 char something[value.length() + 1];
 
                 strcpy(something, value.c_str());
@@ -637,9 +590,6 @@ int main() {
             }
             
             loopCounter = 0;
-            // for (int i = 0; i < strlen(root->left->key); i++)
-            //     cout << root->left->key[i];
-            // cout<<endl;
         }
         else if (operation.compare("G") == 0) {
             badnessGlobal =0;
@@ -651,7 +601,6 @@ int main() {
             getNode(something, root);
             cout <<lineCounter<<" "<< "(" << something << "," << badnessGlobal << ")" << endl;
             
-            // something here
         }
         else if (operation.compare("E") == 0) {
             lineCounter++;
@@ -668,11 +617,7 @@ int main() {
                 stringstream >> value;
             }
             loopCounter = 0;
-            //cout  << endl << endl; 
-            // for (int i = 0; i < strlen(root->key); i++)
-            //     cout << root->key[i] ;
-            // cout << " - this is root node now!" << endl;    
-            //printInorder(root);
+
         }
         else if (operation.compare("L") == 0) {
             lineCounter++;
@@ -696,7 +641,6 @@ int main() {
                 cout << endl;
             }
             
-            // something here
         }
         else if (operation.compare("D") == 0) {
             lineCounter++;
@@ -708,7 +652,6 @@ int main() {
             char something2[b.length() + 1];
             strcpy(something1, a.c_str());
             strcpy(something2, b.c_str());
-            //cout << a << b<<endl;
             cout << lineCounter << " ";
             dump(something1, something2, root);
             cout << endl;
@@ -721,27 +664,6 @@ int main() {
             return -1;
         }  
     } 
-
-
-// char a[] = "abb";
-// char b[] = "abc";
-// char aaa = 'A';
-// char bbb = 'b';
-// const char* aa = "b";
-// const char* bb = "A";
-
-// int result = compare_lexicographically(a,b);
-// cout << "COMPARISON: " << result<<endl;
-
-
-//  d.insertInit(10,"10");
-
-//  d.insertInit(20,"20");
-//  d.insertInit(30,"30");
-//  d.insertInit(40,"40");
-//  d.insertInit(50,"50");
-//  d.insertInit(25,"25");
-
 
  return 0;
 }
