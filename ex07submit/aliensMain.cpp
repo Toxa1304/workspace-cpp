@@ -30,6 +30,7 @@ int maxDepth(Node* node)
 bool foundParent = false;
 bool inserted = false;
 int whichTopNodeInserted;
+
 void insert_at(Node* node,int from, int value, char side, int topNodeIndex){
     if(value == from){
         print_error(1);
@@ -69,12 +70,10 @@ void insert_at(Node* node,int from, int value, char side, int topNodeIndex){
     else{
         insert_at(node -> left, from, value, side, topNodeIndex);
         insert_at(node -> right, from, value, side, topNodeIndex);
-
     }
-
-
 }
 int insertAt = 0;
+
 void fill_array(Node* node, int* list){
     
      if(node == NULL){
@@ -82,9 +81,7 @@ void fill_array(Node* node, int* list){
         return;
         
     }
-    
     fill_array(node -> left, list);
-    //std::cout << node->elem << ' ' ;
     list[insertAt] = node -> elem;
     insertAt +=1;
     fill_array(node -> right,list);
@@ -130,7 +127,6 @@ int main(){
                 if(error6==false){   
                     Node* top_Node = new Node(0);
                     topNodeList[numberOfTopNodes]= top_Node;
-                    //topNodeList[numberOfTopNodes-1]->numberOfNodes = numberOfNodes;
                     numberOfTopNodes +=1;
                     firstOne2=false;
                     numberOfNodes = 0;
@@ -143,25 +139,11 @@ int main(){
                     topNode = top_Node;
                 }
                 error6=false;
-                //std::cout << &top_Node << std::endl;
-                
-                //std::cout << "num of top nodes: " << numberOfTopNodes << std::endl;
             }
-            
-
-
-           
-            
-            
-            
-
             firstOne = false;
-
-            
         }
         if (c == 'L'){
             numberOfNodes +=1;
-            //topNode -> numberOfNodes +=1;
             cin >> from;
             cin >> val;
             for(int i = 0; i< numberOfTopNodes; i++){
@@ -180,7 +162,6 @@ int main(){
         }
         if(c == 'R'){
             numberOfNodes +=1;
-            //topNode -> numberOfNodes +=1;
             cin >> from;
             cin >> val;
             for(int i = 0; i< numberOfTopNodes; i++){
@@ -189,87 +170,49 @@ int main(){
                     topNodeList[whichTopNodeInserted]->numberOfNodes +=1;
                     break;
                 }
-            }
-            
+            }   
             if(inserted == false){
                 print_error(2);
             }
             inserted = false;
         }
         if(c == '?'){
-          
             insertAt = 0;    
+            cin >> val;
+            bool breaker = false;
+            for(int i=0; i<numberOfTopNodes; i++){
+                if(breaker == true){
+                        break;
+                }
+                int arraySize =topNodeList[i]->numberOfNodes;
+                int arrayForOuptut[arraySize];
+                insertAt = 0;
+                fill_array(topNodeList[i], arrayForOuptut);
+                for(int j= 0; j<arraySize; j++){
+                    if(val == arrayForOuptut[j]){
+                        if(j==0){
+                            std::cout <<  "0 " <<arrayForOuptut[j+1]  <<std::endl; 
+                        }
+                        else if(j==arraySize-1){
+                            std::cout << arrayForOuptut[j-1] << " 0" <<std::endl; 
+                        }
 
-            if(1){
-                //topNodeList[numberOfTopNodes-1] = &topNode;
-                //numberOfTopNodes+=1;
-                //topNodeList[numberOfTopNodes-1]->numberOfNodes = numberOfNodes;
-                cin >> val;
-                //cout <<"reading ? " << val << endl;
-               
-
-                bool breaker = false;
-                for(int i=0; i<numberOfTopNodes; i++){
-                    if(breaker == true){
-                            break;
+                        else if (j==0 && j ==arraySize-1){
+                            std::cout << "0 0" << std::endl;
+                        }
+                        else{
+                            std::cout << arrayForOuptut[j-1] << " " << arrayForOuptut[j+1] << std::endl;
+                        }
+                        breaker =true;
+                        break;
                     }
-                    int arraySize =topNodeList[i]->numberOfNodes;
-                    int arrayForOuptut[arraySize];
-                    insertAt = 0;
-                    fill_array(topNodeList[i], arrayForOuptut);
-                    //cout << "number of topNodes= " << arraySize << endl;
-                    // for(int z=0; z<arraySize; z++){
-                    //     cout<<arrayForOuptut[z]<< " ";
-                    // }
-                    //cout<< topNodeList[i]->numberOfNodes <<" this was number of nodes"<< endl;
-                    for(int j= 0; j<arraySize; j++){
-                        //cout<< "array number: "<<i << arrayForOuptut[j]<< " ";
-                        if(val == arrayForOuptut[j]){
-                            if(j==0){
-                                std::cout <<  "0 " <<arrayForOuptut[j+1]  <<std::endl; 
-                            }
-                            else if(j==arraySize-1){
-                                std::cout << arrayForOuptut[j-1] << " 0" <<std::endl; 
-                            }
-
-                            else if (j==0 && j ==arraySize-1){
-                                std::cout << "0 0" << std::endl;
-                            }
-                            else{
-                                std::cout << arrayForOuptut[j-1] << " " << arrayForOuptut[j+1] << std::endl;
-                            }
-                            breaker =true;
-                            break;
-                        }
-                        else if(j==arraySize-1 && i==numberOfTopNodes-1){
-                            print_error(0);
-                        }
+                    else if(j==arraySize-1 && i==numberOfTopNodes-1){
+                        print_error(0);
                     }
                 }
             }
-            
 
-            
-            
-            
-            
-            
-            
-
-        
-        }
-        if (c=='F'){
-
-            //print_tree(&topNode);
-            //update_tree(&topNode);
-           // print_tree(&topNode);
-
-           //std::cout << "Number of nodes: " << topNodeList[0]->numberOfNodes << std::endl;
-           //fill_tree(&topNode);
-           //print_tree(&topNode);
         }
     }
-
     return 1;
-
 }
