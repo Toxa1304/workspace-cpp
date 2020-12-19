@@ -94,13 +94,8 @@ bool error6 = false;
 int main(){
 
     char c;
-    int from;
-    int val;
-    
-    int arraySize;
+    int from,val,arraySize;
     using namespace std;
-    
-    
     while(cin >>c){
         if (c == 'T'){
             cin >> val;
